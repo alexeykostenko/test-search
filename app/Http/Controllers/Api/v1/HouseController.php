@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\HouseRepository;
+use Illuminate\Http\Request;
 
 class HouseController extends Controller
 {
-    public function search()
+    private $houseRepository;
+
+    public function __construct(HouseRepository $houseRepository)
     {
-        return 'Houses';
+        $this->houseRepository = $houseRepository;
+    }
+
+    public function search(Request $request)
+    {
+        return $this->houseRepository->search($request->all());
     }
 }
