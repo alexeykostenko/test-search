@@ -33,7 +33,7 @@ Route::group(['namespace' => 'Api\v1', 'prefix' => 'v1'], function() {
      * @apiParamExample {json} Request-Example:
      *   {
      *       "status": "success",
-     *       "data": [{
+     *       "houses": [{
      *           "name": "The Victoria",
      *           "price": 374662,
      *           "bedrooms": 4,

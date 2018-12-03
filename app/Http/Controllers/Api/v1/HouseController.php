@@ -17,6 +17,13 @@ class HouseController extends Controller
 
     public function search(Request $request)
     {
-        return $this->houseRepository->search($request->all());
+        $houseRepositoryFields = $this->houseRepository->getFields();
+
+        $response = [
+            'status' => 'success',
+            'houses' => $this->houseRepository->search($request->only($houseRepositoryFields))
+        ];
+
+        return $response;
     }
 }
