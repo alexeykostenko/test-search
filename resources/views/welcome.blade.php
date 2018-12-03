@@ -4,95 +4,110 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <title>Search Houses</title>
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+  <body class="bg-light">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+    <div class="container">
+      <div class="py-5 text-center">
+        <h2>Search Houses</h2>
+        <p class="lead">You can easily find a house by filling out the form below.</p>
+      </div>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">House found</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Product name</h6>
+                <small class="text-muted">Brief description</small>
+              </div>
+              <span class="text-muted">$12</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Second product</h6>
+                <small class="text-muted">Brief description</small>
+              </div>
+              <span class="text-muted">$8</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Third item</h6>
+                <small class="text-muted">Brief description</small>
+              </div>
+              <span class="text-muted">$5</span>
+            </li>
+          </ul>
         </div>
-    </body>
+
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Search Form</h4>
+          <form class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="house-name">House name</label>
+              <input type="text" class="form-control" name="house_name" id="house-name" placeholder="The Victoria">
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                  <label for="minimum-price">Minimum price</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" class="form-control" name="price_min" id="minimum-price" placeholder="263604" required>
+                  </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                  <label for="maximum-price">Maximum price</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" class="form-control" name="price_max" id="maximum-price" placeholder="263604" required>
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="bedrooms">Bedrooms</label>
+                <input type="number" class="form-control" name="bedrooms" id="bedrooms" placeholder="4">
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <label for="bathrooms">Bathrooms</label>
+                <input type="number" class="form-control" name="bathrooms" id="bathrooms" placeholder="3" required>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <label for="storeys">Storeys</label>
+                <input type="number" class="form-control" name="storeys" id="storeys" placeholder="2" required>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <label for="garages">Garages</label>
+                <input type="number" class="form-control" name="garages" id="garages" placeholder="1" required>
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <button id="search-button" class="btn btn-primary btn-lg" type="button">Search</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2018 Company Name</p>
+      </footer>
+    </div>
+  </body>
 </html>
