@@ -17,6 +17,10 @@ class HouseRepository
         $query = House::query();
 
         foreach ($searchParameters as $column => $searchParameter) {
+            if (!$searchParameter) {
+                continue;
+            }
+
             if ($column === 'name') {
                 $query->where($column, 'like', '%' . $searchParameter . '%');
             } elseif ($column === 'price_min') {
